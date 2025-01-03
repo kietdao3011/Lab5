@@ -1,5 +1,5 @@
 
-@extends('layout.example')
+@extends('layouts.example')
 @section('title', 'Book list')
 @section('content')
 <h2 class="text-center text-uppercase text-danger">Book List</h2>
@@ -9,6 +9,7 @@
 <table class="table">
     <thead>
         <tr>
+       
             <th scope="col">MaSach</th>
             <th scope="col">TenSach</th>
             <th scope="col">TacGia</th>
@@ -18,21 +19,19 @@
         </tr>
     </thead>
     <tbody>
-   
+  
 
         @foreach ($Sachs as $Sach)
         <tr>
+        
             <td>{{$Sach->MaSach}}</td>
             <td>{{$Sach->TenSach}}</td>
             <td>{{$Sach->TacGia}}</td>
             <td>{{$Sach->NhaXuatBan}}</td>
             <td>{{$Sach->TheLoai}}</td>
             <td class="" style="white-space:nowrap">
-                <a class="d-inline" href="/books/{{$Sach->MaSach}}"><i class="bi bi-eye-fill me-1"></i></a>
-                <a class="d-inline" href="/books/{{$Sach->MaSach}}/edit"><i class="bi bi-pencil-fill me-1"></i></a>
-           
-           
-
+                <a class="d-inline" href="/Sachs/{{$Sach->MaSach}}"><i class="bi bi-eye-fill me-1"></i></a>
+                <a class="d-inline" href="/Sachs/{{$Sach->MaSach}}/edit"><i class="bi bi-pencil-fill me-1"></i></a>
 
                 <button type="button" class="btn p-0 text-danger " data-bs-toggle="modal" data-bs-target="#deleteModal" style="border: none; background: none;">
                 <i class="bi bi-trash-fill"></i>
@@ -49,7 +48,7 @@
                          </div>
                          <div class="modal-footer">
                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                             <form action="{{ route('Sachs.destroy', $Sach->id) }}" method="POST" class="d-inline">
+                             <form action="{{ route('Sachs.destroy', $Sach->MaSach) }}" method="POST" class="d-inline">
                                  @csrf
                                  @method('DELETE')
                                  <button type="submit" class="btn btn-primary">Delete</button>
@@ -64,9 +63,6 @@
         @endforeach
     </tbody>
 </table>
-
-
-{{$Sachs->links('pagination::bootstrap-5')}}
 
 
 @endsection

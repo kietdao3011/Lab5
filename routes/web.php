@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); 
-});
-use App\Http\Controllers\BookController;
+    Route::resource('/Sachs', BookController::class);
+    Route::delete('/Sachs/{Sach}', [BookController::class, 'destroy'])->name('Sachs.destroy');
+    Route::get('/Sachs/{MaSach}', [BookController::class, 'show'])->name('Sachs.show'); 
+    Route::get('/Sachs/{MaSach}', [BookController::class, 'edit'])->name('Sachs.edit'); 
+    Route::get('/Sachs/{MaSach}', [BookController::class, 'update'])->name('Sachs.update'); 
+    
 
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+});
+
+
+
 require __DIR__.'/auth.php';
 
 

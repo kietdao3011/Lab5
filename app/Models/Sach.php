@@ -7,19 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sach extends Model
 {
+    use HasFactory;
     protected $table = 'Sach';
-    protected $primaryKey = 'MaSach';
+    protected $primaryKey = 'MaSach'; // Đặt cột khóa chính là MaSach
+    public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
+        'MaSach',
         'TenSach',
         'TacGia',
-        'Nhaxuatban',
+        'NhaXuatBan',
         'TheLoai',
         'GiaBan',
         'SoLuongTonKho',
         'NgayXuatBan',
-        'MoTa',
+        'MoTa'
     ];
 }
 ?>

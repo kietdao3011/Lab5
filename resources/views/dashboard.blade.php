@@ -69,7 +69,7 @@
         <h1 class="text-4xl font-bold">Welcome to your Dashboard</h1>
         <p class="mt-4">Manage your book inventory, track sales, and more.</p>
         <div class="mt-10">
-            <a href="{{ url('/books') }}" class="btn btn-blue">View Books</a>
+            <a href="/Sachs" class="btn btn-blue">View Books</a>
             <a href="{{ url('/sales') }}" class="btn btn-green">View Sales</a>
         </div>
     </main>

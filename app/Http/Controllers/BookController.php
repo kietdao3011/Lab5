@@ -12,6 +12,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        
        $Sachs = Sach::all();
         return view('books.index', compact('Sachs'));
 
@@ -22,39 +23,71 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.add');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    { $request->validate([
+        'MaSach' => 'required',
+        'TenSach' => 'required',
+        'TacGia' => 'required',
+        'NhaXuatBan' => 'required',
+        'TheLoai' => 'required',
+        'GiaBan' => 'required',
+        'SoLuongTonKho'=> 'required',
+        'NgayXuatBan' => 'required',
+        'MoTa'=> 'required'
+        
+    ]);
+    $SachData = $request->all();
+    Sach::create($SachData);
+
+    return redirect()->route('Sachs.index')->with('success', 'Book created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $MaSach)
     {
-        //
+        $Sach = Sach::findOrFail($MaSach);
+        return view('books.show', compact(['Sach']));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $MaSach)
     {
-        //
+        $Sach = Sach::findOrFail($MaSach);
+        return view('books.edit', compact(['Sach']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $MaSach)
     {
-        //
+        $request->validate([
+           'MaSach' => 'required',
+        'TenSach' => 'required',
+        'TacGia' => 'required',
+        'NhaXuatBan' => 'required',
+        'TheLoai' => 'required',
+        'GiaBan' => 'required',
+        'SoLuongTonKho'=> 'required',
+        'NgayXuatBan' => 'required',
+        'MoTa'=> 'required'
+
+        ]);  
+        $SachData = $request->all();
+        $Sach = Sach::findOrFail($MaSach);
+        $Sach->update($SachData);
+
+        return redirect()->route('Sachs.index')->with('success', 'Task updated successfully!');
     }
 
     /**
