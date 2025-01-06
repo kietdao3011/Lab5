@@ -70,7 +70,7 @@
         <p class="mt-4">Manage your book inventory, track sales, and more.</p>
         <div class="mt-10">
             <a href="/Sachs" class="btn btn-blue">View Books</a>
-            <a href="{{ url('/sales') }}" class="btn btn-green">View Sales</a>
+            <a href="{{ url('/Sales') }}" class="btn btn-green">View Sales</a>
         </div>
     </main>
 </x-app-layout>

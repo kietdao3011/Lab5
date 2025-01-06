@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CTDHControler;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,9 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/Sachs/{MaSach}', [BookController::class, 'show'])->name('Sachs.show'); 
     Route::get('/Sachs/{MaSach}', [BookController::class, 'edit'])->name('Sachs.edit'); 
     Route::get('/Sachs/{MaSach}', [BookController::class, 'update'])->name('Sachs.update'); 
-    
-
-
+    Route::resource('/Sales', SalesController::class);
+    Route::get('/Sales/{MaSach}', [SalesController::class, 'show'])->name('Sales.show');
+    Route::get('/Sales/{MaSach}', [SalesController::class, 'edit'])->name('Sales.edit');
+    Route::get('/Sales/{MaSach}', [SalesController::class, 'update'])->name('Sales.update');
+    Route::get('/Sales/{MaSach}', [SalesController::class, 'destroy'])->name('Sales.destroy');
+    Route::resource('/CTDH', CTDHControler::class);
+   
 });
 
 

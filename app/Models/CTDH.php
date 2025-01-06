@@ -20,6 +20,7 @@ class CTDH extends Model
         'MaSach',
         'SoLuongSach',
         'GiaBan',
+        'TongGia'
     ];
 
     public function donHang()
