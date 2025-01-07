@@ -1,3 +1,4 @@
+
 @extends('layouts.example2')
 @section('title', 'Book List')
 @section('content')
@@ -14,7 +15,7 @@
                 <th scope="col">TacGia</th>
                 <th scope="col">NhaXuatBan</th>
                 <th scope="col">TheLoai</th>
-              
+                <th scope="col">ChiTiet</th>
             </tr>
         </thead>
         <tbody>
@@ -26,12 +27,15 @@
                 <td>{{ $Sale->NhaXuatBan }}</td>
                 <td>{{ $Sale->TheLoai }}</td>
                 <td class="text-center" style="white-space:nowrap">
-                
+                    <a class="d-inline" href="/Sales/{{ $Sale->MaSach }}"><i class="bi bi-eye-fill me-1"></i></a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
+    <div class="d-flex justify-content-center">
+        {{ $Sales->links('pagination::bootstrap-5') }}
+    </div>
 </div>
 @endsection
+

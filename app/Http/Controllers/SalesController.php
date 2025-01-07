@@ -14,7 +14,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $Sales = Sach::all();
+        $Sales = Sach::paginate(10);
+        
         return view('sales.index', compact('Sales'));
     }
 
@@ -50,9 +51,10 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(string $MaSach)
     {
-       
+        $Sale = Sach::findOrFail($MaSach);
+        return view('sales.show', compact(['Sale']));
     }
 
     /**
@@ -74,15 +76,14 @@ class SalesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $MaChiTiet)
     {
-        //
+        $Sales = CTDH::findOrFail($MaChiTiet);
+        $Sales->delete();
+        return redirect()->route('Sales.index')->with('success','Return Successfully');
     }
 
    
 
-    public function return(string $MaSach)
-    {
-        //
-    }
+   
 }

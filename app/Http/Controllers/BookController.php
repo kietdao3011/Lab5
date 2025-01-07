@@ -87,7 +87,7 @@ class BookController extends Controller
         $Sach = Sach::findOrFail($MaSach);
         $Sach->update($SachData);
 
-        return redirect()->route('Sachs.index')->with('success', 'Task updated successfully!');
+        return redirect()->route('Sachs.index')->with('success', 'Book updated successfully!');
     }
 
     /**
@@ -97,6 +97,7 @@ class BookController extends Controller
     {
         $Sachs = Sach::findOrFail($MaSach);
         $Sachs->delete();
-        return redirect()->route('books.index')->with('success','Deleted Successfully');
+        return redirect()->route('Sachs.index')->with('success','Deleted successfully!');
+       
     }
 }

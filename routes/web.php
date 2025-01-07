@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); 
     Route::resource('/Sachs', BookController::class);
-    Route::delete('/Sachs/{Sach}', [BookController::class, 'destroy'])->name('Sachs.destroy');
+    Route::delete('/Sachs/{MaSach}', [BookController::class, 'destroy'])->name('Sachs.destroy');
     Route::get('/Sachs/{MaSach}', [BookController::class, 'show'])->name('Sachs.show'); 
     Route::get('/Sachs/{MaSach}', [BookController::class, 'edit'])->name('Sachs.edit'); 
     Route::get('/Sachs/{MaSach}', [BookController::class, 'update'])->name('Sachs.update'); 
@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/Sales/{MaSach}', [SalesController::class, 'show'])->name('Sales.show');
     Route::get('/Sales/{MaSach}', [SalesController::class, 'edit'])->name('Sales.edit');
     Route::get('/Sales/{MaSach}', [SalesController::class, 'update'])->name('Sales.update');
-    Route::get('/Sales/{MaSach}', [SalesController::class, 'destroy'])->name('Sales.destroy');
+    Route::delete('/Sales/{MaChiTiet}', [SalesController::class, 'destroy'])->name('Sales.destroy');
     Route::resource('/CTDH', CTDHControler::class);
    
 });

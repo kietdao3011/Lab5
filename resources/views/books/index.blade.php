@@ -1,4 +1,3 @@
-
 @extends('layouts.example')
 @section('title', 'Book list')
 @section('content')
