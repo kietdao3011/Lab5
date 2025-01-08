@@ -66,8 +66,8 @@
     </header>
 
     <main class="container mx-auto mt-10">
-        <h1 class="text-4xl font-bold">Welcome to your Dashboard</h1>
-        <p class="mt-4">Manage your book inventory, track sales, and more.</p>
+        <h1 class="text-4xl font-bold">Welcome to library</h1>
+        <p class="mt-4">Choose your favor books</p>
         <div class="mt-10">
             <a href="/Sachs" class="btn btn-blue">View Books</a>
             <a href="{{ url('/Sales') }}" class="btn btn-green">View Sales</a>

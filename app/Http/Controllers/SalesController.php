@@ -14,7 +14,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $Sales = Sach::paginate(10);
+        $Sales = Sach::paginate(7);
         
         return view('sales.index', compact('Sales'));
     }
