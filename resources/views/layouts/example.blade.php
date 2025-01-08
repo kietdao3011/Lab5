@@ -26,7 +26,7 @@
         height: 100px; /* Chiều cao cố định */
         text-align: center;
         width: 100%;
-        position: fixed; /* Cố định footer */
+        /* Cố định footer */
         bottom: 0;
         left: 0;
         display: flex;

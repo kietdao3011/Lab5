@@ -42,6 +42,7 @@
     <textarea class="form-control" id="MoTa" name="MoTa" required></textarea>
 </div>
         <button type="submit" class="btn btn-danger">Add</button>
+        
     </form>
 </div>
 
