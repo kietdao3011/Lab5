@@ -54,6 +54,11 @@
                  </div>
              </div>
                 
+
+                    <!-- Nút View Orders -->
+                    <a href="{{ route('Sales.orders_by_customer', $Sale->MaDonHang) }}" class="btn btn-primary ms-2">
+                        View Orders
+                    </a>
                 </td>
             </tr>
             

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CTDH;
 use App\Models\Sach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class SalesController extends Controller
@@ -12,7 +13,14 @@ class SalesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getOrdersByCustomer($maDonHang)
+    {
+        // Gọi stored procedure
+        $orders = DB::select('EXEC dbo.GetDonHangByMaDonHang @MaDonHang = ?', [$maDonHang]);
+    
+        // Trả về view hiển thị danh sách đơn hàng
+        return view('sales.orders_by_customer', compact('orders', 'maDonHang'));
+    }    public function index()
     {
         $Sales = Sach::paginate(7);
         

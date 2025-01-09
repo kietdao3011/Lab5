@@ -13,6 +13,7 @@ class CTDHControler extends Controller
     public function index()
     {
         $Sales = CTDH::all();
+        
         return view('sales.CTDH', compact(['Sales']));
     }
 

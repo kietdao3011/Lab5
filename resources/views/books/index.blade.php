@@ -32,6 +32,7 @@
                 <a class="d-inline" href="/Sachs/{{$Sach->MaSach}}"><i class="bi bi-eye-fill me-1"></i></a>
                 <a class="d-inline" href="/Sachs/{{$Sach->MaSach}}/edit"><i class="bi bi-pencil-fill me-1"></i></a>
 
+
                 <button type="button" class="btn p-0 text-danger " data-bs-toggle="modal" data-bs-target="#deleteModal" style="border: none; background: none;">
                 <i class="bi bi-trash-fill"></i>
              </button>
@@ -56,12 +57,22 @@
                      </div>
                  </div>
              </div>
+             <button class="btn btn-primary" onclick="handleGiaBan('{{ $Sach->GiaBan }}')">
+                        Hiển thị giá
+                    </button>
 
          </td>
+       
      </tr>
         @endforeach
     </tbody>
 </table>
+<script>
+    // Hàm xử lý khi bấm nút
+    function handleGiaBan(giaBan) {
+        alert("Giá bán của sách: " + giaBan);
+    }
+</script>
 
 
 @endsection

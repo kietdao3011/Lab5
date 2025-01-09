@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sach;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         
        $Sachs = Sach::all();
-        return view('books.index', compact('Sachs'));
+       $books = Sach::select('MaSach', 'TenSach', DB::raw('dbo.LayGiaBanSach(MaSach) AS GiaBan'))->get();
+        // Tạo mảng kết hợp dữ liệu $Sachs với $books
+    $combinedBooks = $Sachs->map(function ($Sach) use ($books) {
+        $giaBan = $books->firstWhere('MaSach', $Sach->MaSach)->GiaBan ?? null;
+        $Sach->GiaBan = $giaBan; // Gắn giá bán vào từng sách
+        return $Sach;
+    });
+    return view('books.index', ['Sachs' => $combinedBooks]);
+      
+       
 
     }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\CTDHControler;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,7 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/Sales/{MaSach}', [SalesController::class, 'edit'])->name('Sales.edit');
     Route::get('/Sales/{MaSach}', [SalesController::class, 'update'])->name('Sales.update');
     Route::delete('/Sales/{MaChiTiet}', [SalesController::class, 'destroy'])->name('Sales.destroy');
+    Route::get('/Sales/orders/{maKhachHang}', [SalesController::class, 'getOrdersByCustomer'])->name('Sales.orders_by_customer');
     Route::resource('/CTDH', CTDHControler::class);
+    Route::get('/orders/status/{MaDonHang}', [OrderController::class, 'getOrderStatus']);
+    Route::get('/orders/status/{MaDonHang}', [OrderController::class, 'showOrderStatus']);
+    
    
 });
 
