@@ -13,6 +13,19 @@ class SalesController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function viewSupplier($MaSach)
+{
+    // Thực hiện truy vấn dữ liệu nguồn gốc từ stored procedure
+    $supplierInfo = DB::select('SELECT * FROM dbo.TTSNhaCungCap(?)', [$MaSach]);
+
+    // Trả về JSON để hiển thị bằng JavaScript (hoặc tạo view nếu cần)
+    if ($supplierInfo) {
+        return response()->json($supplierInfo);
+    } else {
+        return response()->json(['error' => 'Không tìm thấy thông tin nguồn gốc'], 404);
+    }
+}
+
     public function getOrdersByCustomer($maDonHang)
     {
         // Gọi stored procedure

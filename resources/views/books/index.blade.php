@@ -60,6 +60,7 @@
              <button class="btn btn-primary" onclick="handleGiaBan('{{ $Sach->GiaBan }}')">
                         Hiển thị giá
                     </button>
+                   
 
          </td>
        
@@ -72,6 +73,7 @@
     function handleGiaBan(giaBan) {
         alert("Giá bán của sách: " + giaBan);
     }
+   
 </script>
 
 

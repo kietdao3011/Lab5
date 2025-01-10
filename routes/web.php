@@ -34,6 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('/CTDH', CTDHControler::class);
     Route::get('/orders/status/{MaDonHang}', [OrderController::class, 'getOrderStatus']);
     Route::get('/orders/status/{MaDonHang}', [OrderController::class, 'showOrderStatus']);
+    Route::get('/Sales/supplier/{MaSach}', [SalesController::class, 'viewSupplier'])->name('Sales.view_supplier');
+  
+
+
+
     
    
 });

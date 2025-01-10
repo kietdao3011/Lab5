@@ -15,7 +15,7 @@
                 <th scope="col">SoLuong</th>
                 <th scope="col">GiaBan</th>
                 <th scope="col">TongGia</th>
-                <th scope="col">TraSach</th>
+                <th scope="col">HanhDong</th>
               
             </tr>
         </thead>
@@ -59,6 +59,10 @@
                     <a href="{{ route('Sales.orders_by_customer', $Sale->MaDonHang) }}" class="btn btn-primary ms-2">
                         View Orders
                     </a>
+                    <button class="btn btn-info ms-2" onclick="xemNguonGoc('{{ $Sale->MaSach }}')">
+    Nguồn gốc sách
+</button>
+
                 </td>
             </tr>
             
@@ -70,4 +74,28 @@
     <a href="{{ route('Sales.index') }}" class="btn btn-secondary">Back</a>
 
 </div>
+<script>
+    function xemNguonGoc(maSach) {
+        fetch(`/Sales/supplier/${maSach}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    let info = 'Thông tin nguồn gốc:\n';
+                    data.forEach(item => {
+                        info += `- Tên Nhà Cung Cấp: ${item.TenNhaCungCap}\n`;
+                        info += `  Địa Chỉ: ${item.DiaChi}\n`;
+                        info += `  Điện Thoại: ${item.DienThoai}\n\n`;
+                    });
+                    alert(info);
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+                alert('Đã xảy ra lỗi khi lấy thông tin nguồn gốc.');
+            });
+    }
+</script>
+
 @endsection
