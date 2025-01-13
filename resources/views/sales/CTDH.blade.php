@@ -85,8 +85,8 @@
                     let info = 'Thông tin nguồn gốc:\n';
                     data.forEach(item => {
                         info += `- Tên Nhà Cung Cấp: ${item.TenNhaCungCap}\n`;
-                        info += `  Địa Chỉ: ${item.DiaChi}\n`;
-                        info += `  Điện Thoại: ${item.DienThoai}\n\n`;
+                        info += `  Nhà Xuất Bản: ${item.NhaXuatBan}\n`;
+                        info += `  Tác Giả: ${item.TacGia}\n\n`;
                     });
                     alert(info);
                 }
